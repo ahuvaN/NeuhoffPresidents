@@ -1,34 +1,29 @@
 package neuhoff.presidents;
 
-/**
- * Created by Ahuva on 10/22/2015.
- */
-public class President {
-    private int number, birth_year, death_year;
-    private String president, took_office, left_office, party;
 
-    public String getLeft_office() {
-        return left_office;
+public class President {
+    private int number, birthYear;
+    private Integer deathYear;
+    private String president, tookOffice, leftOffice, party;
+
+    public String getLeftOffice() {
+        return leftOffice;
     }
 
     public String getParty() {
-
         return party;
     }
 
-    public String getTook_office() {
-
-        return took_office;
+    public String getTookOffice() {
+        return tookOffice;
     }
 
-    public int getDeath_year() {
-
-        return death_year;
+    public Integer getDeathYear() {
+        return deathYear;
     }
 
-    public int getBirth_year() {
-
-        return birth_year;
+    public int getBirthYear() {
+        return birthYear;
     }
 
     public int getNumber() {
