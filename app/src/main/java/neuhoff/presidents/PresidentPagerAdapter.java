@@ -41,11 +41,17 @@ public class PresidentPagerAdapter extends PagerAdapter {
         birthYear.append("\nBorn= \t");
         birthYear.append(String.valueOf(president.getBirthYear()));
         deathYear.append("\nDied= \t");
-        deathYear.append(String.valueOf(president.getDeathYear()));
+        if (president.getDeathYear() == null)
+            deathYear.append("Still Alive");
+        else
+            deathYear.append(String.valueOf(president.getDeathYear()));
         tookOffice.append("\nTook Office= \t");
         tookOffice.append(president.getTookOffice());
         leftOffice.append("\nLeft Office= \t");
-        leftOffice.append(president.getLeftOffice());
+        if (president.getLeftOffice() != null)
+            leftOffice.append(president.getLeftOffice());
+        else
+            leftOffice.append("Still in Office");
         party.append("\nParty= \t");
         party.append(president.getParty());
 
