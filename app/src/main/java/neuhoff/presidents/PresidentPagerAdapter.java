@@ -27,10 +27,27 @@ public class PresidentPagerAdapter extends PagerAdapter {
         View view = inflater.inflate(R.layout.president_pager_item, null);
         TextView name = (TextView) view.findViewById(R.id.name);
         TextView number = (TextView) view.findViewById(R.id.number);
+        TextView tookOffice = (TextView) view.findViewById(R.id.tookOffice);
+        TextView leftOffice = (TextView) view.findViewById(R.id.leftOffice);
+        TextView birthYear = (TextView) view.findViewById(R.id.birthYear);
+        TextView deathYear = (TextView) view.findViewById(R.id.deathYear);
+        TextView party = (TextView) view.findViewById(R.id.party);
 
         President president = presidents[position];
-        name.setText(president.getPresident());
-        number.setText(String.valueOf(president.getNumber()));
+        name.append("\nName= \t");
+        name.append(president.getPresident());
+        number.append("\nNumber= \t");
+        number.append(String.valueOf(president.getNumber()));
+        birthYear.append("\nBorn= \t");
+        birthYear.append(String.valueOf(president.getBirthYear()));
+        deathYear.append("\nDied= \t");
+        deathYear.append(String.valueOf(president.getDeathYear()));
+        tookOffice.append("\nTook Office= \t");
+        tookOffice.append(president.getTookOffice());
+        leftOffice.append("\nLeft Office= \t");
+        leftOffice.append(president.getLeftOffice());
+        party.append("\nParty= \t");
+        party.append(president.getParty());
 
         container.addView(view);
         return view;

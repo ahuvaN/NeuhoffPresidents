@@ -14,6 +14,7 @@ public class PresidentAdapter extends RecyclerView.Adapter<PresidentViewHolder> 
     private President[] presidents;
 
     public PresidentAdapter(President[] presidents){
+
         this.presidents = presidents;
     }
     @Override
