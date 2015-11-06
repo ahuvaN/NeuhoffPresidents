@@ -1,7 +1,9 @@
 package neuhoff.presidents;
 
 
-public class President {
+import java.io.Serializable;
+
+public class President implements Serializable{
     private int number, birthYear;
     private Integer deathYear;
     private String president, tookOffice, leftOffice, party;

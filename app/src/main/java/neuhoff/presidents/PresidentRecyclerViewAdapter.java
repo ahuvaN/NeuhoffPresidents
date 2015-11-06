@@ -9,13 +9,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 //handles the creation of viewable ist and the one that is going to be created as soon as list is scrolled
-public class PresidentAdapter extends RecyclerView.Adapter<PresidentViewHolder> {
+public class PresidentRecyclerViewAdapter extends RecyclerView.Adapter<PresidentViewHolder> {
 
     private President[] presidents;
+    private int[] pics;
 
-    public PresidentAdapter(President[] presidents){
-
+    public PresidentRecyclerViewAdapter(President[] presidents, int[] pics){
         this.presidents = presidents;
+        this.pics = pics;
     }
     @Override
     public PresidentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -27,7 +28,7 @@ public class PresidentAdapter extends RecyclerView.Adapter<PresidentViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(final PresidentViewHolder holder, int position) {
+    public void onBindViewHolder(final PresidentViewHolder holder, final int position) {
         holder.bind(presidents[position]);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -36,6 +37,9 @@ public class PresidentAdapter extends RecyclerView.Adapter<PresidentViewHolder> 
             public void onClick(View v) {
                 Context context = holder.itemView.getContext();
                 Intent intent = new Intent(context, DetailActivity.class);
+                intent.putExtra("PRESIDENTS", presidents);
+                intent.putExtra("PICS", pics);
+                intent.putExtra("POSITION", position);
                 context.startActivity(intent);
             }
         });

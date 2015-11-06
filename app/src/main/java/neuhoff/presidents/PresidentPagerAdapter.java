@@ -4,15 +4,18 @@ import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
 public class PresidentPagerAdapter extends PagerAdapter {
 
     private President[] presidents;
+    private int[] pics;
 
-    public PresidentPagerAdapter(President[] presidents) {
+    public PresidentPagerAdapter(President[] presidents, int[] pics) {
         this.presidents = presidents;
+        this.pics = pics;
     }
 
     @Override
@@ -25,34 +28,30 @@ public class PresidentPagerAdapter extends PagerAdapter {
 
         LayoutInflater inflater = LayoutInflater.from(container.getContext());
         View view = inflater.inflate(R.layout.president_pager_item, null);
+
+        ImageView image = (ImageView) view.findViewById(R.id.image);
         TextView name = (TextView) view.findViewById(R.id.name);
         TextView number = (TextView) view.findViewById(R.id.number);
-        TextView tookOffice = (TextView) view.findViewById(R.id.tookOffice);
-        TextView leftOffice = (TextView) view.findViewById(R.id.leftOffice);
+        TextView office = (TextView) view.findViewById(R.id.office);
         TextView birthYear = (TextView) view.findViewById(R.id.birthYear);
-        TextView deathYear = (TextView) view.findViewById(R.id.deathYear);
         TextView party = (TextView) view.findViewById(R.id.party);
 
         President president = presidents[position];
-        name.append("\nName= \t");
-        name.append(president.getPresident());
-        number.append("\nNumber= \t");
-        number.append(String.valueOf(president.getNumber()));
-        birthYear.append("\nBorn= \t");
+        image.setImageResource(pics[position]);
+        name.setText(president.getPresident());
+        number.setText(String.valueOf(president.getNumber()));
         birthYear.append(String.valueOf(president.getBirthYear()));
-        deathYear.append("\nDied= \t");
+        birthYear.append(" - ");
         if (president.getDeathYear() == null)
-            deathYear.append("Still Alive");
+            birthYear.append("Still Alive");
         else
-            deathYear.append(String.valueOf(president.getDeathYear()));
-        tookOffice.append("\nTook Office= \t");
-        tookOffice.append(president.getTookOffice());
-        leftOffice.append("\nLeft Office= \t");
+            birthYear.append(String.valueOf(president.getDeathYear()));
+        office.append(president.getTookOffice());
+        office.append(" - ");
         if (president.getLeftOffice() != null)
-            leftOffice.append(president.getLeftOffice());
+            office.append(president.getLeftOffice());
         else
-            leftOffice.append("Still in Office");
-        party.append("\nParty= \t");
+            office.append("Still in Office");
         party.append(president.getParty());
 
         container.addView(view);
