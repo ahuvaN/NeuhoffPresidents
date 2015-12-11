@@ -8,15 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-//handles the creation of viewable ist and the one that is going to be created as soon as list is scrolled
+//handles the creation of viewable list and the one that is going to be created as soon as list is scrolled
 public class PresidentRecyclerViewAdapter extends RecyclerView.Adapter<PresidentViewHolder> {
 
     private President[] presidents;
-    private int[] pics;
+    //private int[] pics;
 
     public PresidentRecyclerViewAdapter(President[] presidents, int[] pics){
         this.presidents = presidents;
-        this.pics = pics;
+        //this.pics = pics;
     }
     @Override
     public PresidentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -38,7 +38,7 @@ public class PresidentRecyclerViewAdapter extends RecyclerView.Adapter<President
                 Context context = holder.itemView.getContext();
                 Intent intent = new Intent(context, DetailActivity.class);
                 intent.putExtra("PRESIDENTS", presidents);
-                intent.putExtra("PICS", pics);
+                //intent.putExtra("PICS", pics);
                 intent.putExtra("POSITION", position);
                 context.startActivity(intent);
             }
