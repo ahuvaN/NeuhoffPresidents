@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -30,6 +31,11 @@ public class PresidentListFragment extends Fragment{
     }
 
     @Override
+    public void onOptionsMenuClosed(Menu menu) {
+        super.onOptionsMenuClosed(menu);
+    }
+
+    @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -48,7 +54,10 @@ public class PresidentListFragment extends Fragment{
 
         presidents = gson.fromJson(new InputStreamReader(in), President[].class);
 
-        PresidentRecyclerViewAdapter adapter = new PresidentRecyclerViewAdapter(presidents, pics);
+        OnPresidentSelectedListener listener = (OnPresidentSelectedListener) getActivity();
+
+        PresidentRecyclerViewAdapter adapter =
+                new PresidentRecyclerViewAdapter(presidents, listener);
         recyclerView.setAdapter(adapter);
 
 
